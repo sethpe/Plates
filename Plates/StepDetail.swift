@@ -42,6 +42,7 @@ struct StepDetail: View {
     }
 
     var body: some View {
+        
 
         NavigationView {
             
@@ -56,7 +57,7 @@ struct StepDetail: View {
                 }
                 
             }
-            
+            .navigationTitle("Weekly Steps")
         }
 
         .onAppear {

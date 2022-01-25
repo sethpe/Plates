@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1FDAF327A0AA71004E2315 /* ActivityData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAF227A0AA71004E2315 /* ActivityData.swift */; };
+		4A1FDAF627A0AB6A004E2315 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAF527A0AB6A004E2315 /* BarChartView.swift */; };
+		4A1FDAFC27A0ABE4004E2315 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAFB27A0ABE4004E2315 /* ColorExtension.swift */; };
+		4A1FDAFE27A0AC63004E2315 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAFD27A0AC63004E2315 /* Constants.swift */; };
 		4A6A4FF6279BBBA7007C42EA /* PlatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF5279BBBA7007C42EA /* PlatesApp.swift */; };
 		4A6A4FF8279BBBA7007C42EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF7279BBBA7007C42EA /* ContentView.swift */; };
 		4A6A4FFA279BBBA8007C42EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF9279BBBA8007C42EA /* Assets.xcassets */; };
@@ -38,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A1FDAF227A0AA71004E2315 /* ActivityData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityData.swift; sourceTree = "<group>"; };
+		4A1FDAF527A0AB6A004E2315 /* BarChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChartView.swift; sourceTree = "<group>"; };
+		4A1FDAFB27A0ABE4004E2315 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		4A1FDAFD27A0AC63004E2315 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4A6A4FF2279BBBA7007C42EA /* Plates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Plates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A6A4FF5279BBBA7007C42EA /* PlatesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatesApp.swift; sourceTree = "<group>"; };
 		4A6A4FF7279BBBA7007C42EA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +89,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1FDAF127A0AA61004E2315 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				4A1FDAF227A0AA71004E2315 /* ActivityData.swift */,
+				4A1FDAFD27A0AC63004E2315 /* Constants.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		4A1FDAF427A0AB58004E2315 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4A6A4FF7279BBBA7007C42EA /* ContentView.swift */,
+				4A1FDAF527A0AB6A004E2315 /* BarChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4A1FDAF727A0ABB9004E2315 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4A1FDAFB27A0ABE4004E2315 /* ColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4A6A4FE9279BBBA7007C42EA = {
 			isa = PBXGroup;
 			children = (
@@ -105,10 +139,12 @@
 		4A6A4FF4279BBBA7007C42EA /* Plates */ = {
 			isa = PBXGroup;
 			children = (
+				4A1FDAF727A0ABB9004E2315 /* Extensions */,
+				4A1FDAF427A0AB58004E2315 /* Views */,
+				4A1FDAF127A0AA61004E2315 /* Data */,
 				4A6A5025279DC93C007C42EA /* Models */,
 				4A6A501F279BBFF4007C42EA /* Plates.entitlements */,
 				4A6A4FF5279BBBA7007C42EA /* PlatesApp.swift */,
-				4A6A4FF7279BBBA7007C42EA /* ContentView.swift */,
 				4A6A5023279BC247007C42EA /* HealthStore.swift */,
 				4AB877F7279DE1940021FABA /* StepDetail.swift */,
 				4A6A4FF9279BBBA8007C42EA /* Assets.xcassets */,
@@ -288,11 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A1FDAF327A0AA71004E2315 /* ActivityData.swift in Sources */,
 				4A6A4FF8279BBBA7007C42EA /* ContentView.swift in Sources */,
 				4A6A5027279DC957007C42EA /* Steps.swift in Sources */,
+				4A1FDAFC27A0ABE4004E2315 /* ColorExtension.swift in Sources */,
 				4A6A5024279BC247007C42EA /* HealthStore.swift in Sources */,
+				4A1FDAF627A0AB6A004E2315 /* BarChartView.swift in Sources */,
 				4AB877F8279DE1940021FABA /* StepDetail.swift in Sources */,
 				4A6A4FF6279BBBA7007C42EA /* PlatesApp.swift in Sources */,
+				4A1FDAFE27A0AC63004E2315 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

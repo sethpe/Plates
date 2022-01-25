@@ -7,6 +7,7 @@
 
 import Foundation
 import HealthKit
+import CoreLocation
 
 
 extension Date {
@@ -61,4 +62,61 @@ class HealthStore {
             healthStore.execute(query)
         }
     }
+    
+    
+//    func readWorkouts() async -> [HKWorkout]? {
+//        let cycling = HKQuery.predicateForWorkouts(with: .cycling)
+//
+//        let samples = try! await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[HKSample], Error>) in
+//            healthStore!.execute(HKSampleQuery(sampleType: .workoutType(), predicate: cycling, limit: HKObjectQueryNoLimit,sortDescriptors: [.init(keyPath: \HKSample.startDate, ascending: false)], resultsHandler: { query, samples, error in
+//                if let hasError = error {
+//                    continuation.resume(throwing: hasError)
+//                    return
+//                }
+//
+//                guard let samples = samples else {
+//                    fatalError("*** Invalid State: This can only fail if there was an error. ***")
+//                }
+//
+//                continuation.resume(returning: samples)
+//            }))
+//        }
+//
+//        guard let workouts = samples as? [HKWorkout] else {
+//            return nil
+//        }
+//
+//        return workouts
+//    }
+//
+//    func getLocationDataForRoute(givenRoute: HKWorkoutRoute) async -> [CLLocation] {
+//        let locations = try! await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[CLLocation], Error>) in
+//            var allLocations: [CLLocation] = []
+//
+//            // Create the route query.
+//            let query = HKWorkoutRouteQuery(route: givenRoute) { (query, locationsOrNil, done, errorOrNil) in
+//
+//                if let error = errorOrNil {
+//                    continuation.resume(throwing: error)
+//                    return
+//                }
+//
+//                guard let currentLocationBatch = locationsOrNil else {
+//                    fatalError("*** Invalid State: This can only fail if there was an error. ***")
+//                }
+//
+//                allLocations.append(contentsOf: currentLocationBatch)
+//
+//                if done {
+//                    continuation.resume(returning: allLocations)
+//                }
+//            }
+//
+//            healthStore!.execute(query)
+//        }
+//
+//        return locations
+//    }
+
+
 }
