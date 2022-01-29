@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
-import HealthKitUI
 import HealthKit
+import SwiftUICharts
 
 struct ContentView: View {
     
     private var healthStore: HealthStore?
-    @State private var steps: [Step] = [Step]()
+    @State private var weeklySteps: [Step] = [Step]()
+    @State private var dailySteps: Int = 0
+    @State private var stepsList: [Step] = [Step]()
+    @State private var dailyStepsData: [Double] = [Double]()
     @State private var workouts: [HKWorkout] = [HKWorkout]()
     
     
@@ -20,62 +23,82 @@ struct ContentView: View {
         healthStore = HealthStore()
     }
     
-    private func updateUIFromStatistics (_ statisticsCollection: HKStatisticsCollection){
+    private func updateUIFromStepsStatistics (_ statisticsCollection: HKStatisticsCollection){
         
-        let startDate = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        let startDate = Calendar.current.date(byAdding: .hour, value: -24, to: Date())!
         let endDate = Date()
         
         statisticsCollection.enumerateStatistics(from: startDate, to: endDate) { (statistics, stop) in
             
             let count = statistics.sumQuantity()?.doubleValue(for: .count())
             
-            let step = Step(count: Int(count ?? 0) /*either we have a number of steps or its 0*/
-            , date: statistics.startDate)
+//            let cumulativeCount = statistics.sumQuantity()?.doubleValue(for: .count())
             
-            steps.append(step) // add all step of each dat
+            let step = Step(count: Int(count ?? 0), date: endDate)
             
+            stepsList.append(step)
+
+            
+//
         }
         
+        print(stepsList)
+        for s in stepsList {
+            print(s.count)
+            let currentCount = Double(s.count)
+            dailyStepsData.append(currentCount)
+            print(dailyStepsData)
+        }
+        
+        for d in dailyStepsData {
+            dailySteps += Int(d)
+        }
     }
-    
-   
     
 
     
     var body: some View {
-       
-//        Text("Home.")
-//            .font(.largeTitle)
-//            .fontWeight(.heavy)
-//            .foregroundColor(.black)
+
+       /* CREATE STEPS GRAPH HERE */
+        
+        LineChartView(data: dailyStepsData, title: "Daily Steps", legend: "\(dailySteps)", form: ChartForm.large)
+        
+//        List(stepsList, id:\.id) { step in
+//            HStack {
+//                Text("\(step.count)")
+//                    .foregroundColor(.mint)
+//                    .font(.headline)
+//                Text(step.date, style: .date)
+//                    .opacity(0.5)
+//            }
+//        }
+//
+        
+//        NavigationView {
+//            List(steps, id:\.id) { step in
+//                NavigationLink  {
+//                    StepDetail()
+//                } label: {
+//                    HStack (alignment: .center){
+//                        Text("\(step.count)")
+//                            .foregroundColor(.mint)
+//                            .font(.headline)
+//                        Text(step.date, style: .date)
+//                            .opacity(0.5)
+//                    }
+//                }
+//            }
+//            .navigationTitle("Daily Steps")
+//        }
+        
         GeometryReader { geometry in
             
             ZStack(alignment: .top){
                 Color.white.edgesIgnoringSafeArea(.all)
                 ScrollView {
                     VStack {
-//                        Spacer(minLength: Constants.navigationBarHeight).frame(width: geometry.size.width, height: Constants.navigationBarHeight, alignment: .top)
-                        
-                        NavigationView {
-                            List(steps, id:\.id) { step in
-                                NavigationLink  {
-                                    StepDetail()
-                                } label: {
-                                    HStack (alignment: .center){
-                                        Text("\(step.count)")
-                                            .foregroundColor(.mint)
-                                            .font(.headline)
-                                        Text(step.date, style: .date)
-                                            .opacity(0.5)
-                                    }
-                                }
-                            }
-                            .navigationTitle("Daily Steps")
-                        }
-                    
-                        
+                        Spacer(minLength: Constants.navigationBarHeight).frame(width: geometry.size.width, height: Constants.navigationBarHeight, alignment: .top)
                         // Create workout charts
-                        
                         self.createCharts()
                     }
                 }
@@ -87,12 +110,12 @@ struct ContentView: View {
         
         .onAppear {
             if let healthStore = healthStore {
-                healthStore.requestAuthorization { success in
+                healthStore.fetchSteps() { success in
                     if success {
-                        healthStore.calculateSteps { statisticsCollection in
+                        healthStore.calculateDailySteps() { statisticsCollection in
                             if let statisticsCollection = statisticsCollection {
                                 // update the UI
-                                updateUIFromStatistics(statisticsCollection)
+                                updateUIFromStepsStatistics(statisticsCollection)
                             }
                         }
                     }
@@ -101,12 +124,14 @@ struct ContentView: View {
         }
         
     }
+    
+    
     func createCharts() -> some View {
          Group {
              // Move Chart
              BarChartView(
-                 title: "Move",
-                 progress: "330",
+                 title: "Activity",
+                 progress: "",
                  goal: "300",
                  total: "2 175 CAL",
                  average: "56",

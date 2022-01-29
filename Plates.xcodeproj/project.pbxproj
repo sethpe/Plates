@@ -11,6 +11,7 @@
 		4A1FDAF627A0AB6A004E2315 /* BarChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAF527A0AB6A004E2315 /* BarChartView.swift */; };
 		4A1FDAFC27A0ABE4004E2315 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAFB27A0ABE4004E2315 /* ColorExtension.swift */; };
 		4A1FDAFE27A0AC63004E2315 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1FDAFD27A0AC63004E2315 /* Constants.swift */; };
+		4A1FDB0127A344AF004E2315 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 4A1FDB0027A344AF004E2315 /* SwiftUICharts */; };
 		4A6A4FF6279BBBA7007C42EA /* PlatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF5279BBBA7007C42EA /* PlatesApp.swift */; };
 		4A6A4FF8279BBBA7007C42EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF7279BBBA7007C42EA /* ContentView.swift */; };
 		4A6A4FFA279BBBA8007C42EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A6A4FF9279BBBA8007C42EA /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A6A5022279BBFF4007C42EA /* HealthKit.framework in Frameworks */,
+				4A1FDB0127A344AF004E2315 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,7 @@
 		4A1FDAF127A0AA61004E2315 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				4A6A5023279BC247007C42EA /* HealthStore.swift */,
 				4A1FDAF227A0AA71004E2315 /* ActivityData.swift */,
 				4A1FDAFD27A0AC63004E2315 /* Constants.swift */,
 			);
@@ -145,7 +148,6 @@
 				4A6A5025279DC93C007C42EA /* Models */,
 				4A6A501F279BBFF4007C42EA /* Plates.entitlements */,
 				4A6A4FF5279BBBA7007C42EA /* PlatesApp.swift */,
-				4A6A5023279BC247007C42EA /* HealthStore.swift */,
 				4AB877F7279DE1940021FABA /* StepDetail.swift */,
 				4A6A4FF9279BBBA8007C42EA /* Assets.xcassets */,
 				4A6A4FFB279BBBA8007C42EA /* Preview Content */,
@@ -210,6 +212,9 @@
 			dependencies = (
 			);
 			name = Plates;
+			packageProductDependencies = (
+				4A1FDB0027A344AF004E2315 /* SwiftUICharts */,
+			);
 			productName = Plates;
 			productReference = 4A6A4FF2279BBBA7007C42EA /* Plates.app */;
 			productType = "com.apple.product-type.application";
@@ -282,6 +287,9 @@
 				Base,
 			);
 			mainGroup = 4A6A4FE9279BBBA7007C42EA;
+			packageReferences = (
+				4A1FDAFF27A344AF004E2315 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 4A6A4FF3279BBBA7007C42EA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -667,6 +675,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4A1FDAFF27A344AF004E2315 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4A1FDB0027A344AF004E2315 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4A1FDAFF27A344AF004E2315 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4A6A4FEA279BBBA7007C42EA /* Project object */;
 }

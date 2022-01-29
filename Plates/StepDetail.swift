@@ -33,7 +33,7 @@ struct StepDetail: View {
             let count = statistics.sumQuantity()?.doubleValue(for: .count())
             
             let step = Step(count: Int(count ?? 0) /*either we have a number of steps or its 0*/
-            , date: statistics.startDate)
+                            , date: statistics.startDate)
             
             weeklySteps.append(step) // add all step of each dat
             
@@ -62,9 +62,9 @@ struct StepDetail: View {
 
         .onAppear {
             if let healthStore = healthStore {
-                healthStore.requestAuthorization { success in
+                healthStore.fetchSteps() { success in
                     if success {
-                        healthStore.calculateSteps { statisticsCollection in
+                        healthStore.calculateDailySteps() { statisticsCollection in
                             if let statisticsCollection = statisticsCollection {
                                 // update the UI
                                 updateUIFromStatistics(statisticsCollection)

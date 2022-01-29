@@ -29,7 +29,7 @@ class HealthStore {
         }
     }
     
-    func requestAuthorization(completion: @escaping (Bool) -> Void){
+    func fetchSteps(completion: @escaping (Bool) -> Void){
         let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
         
         guard let healthStore = self.healthStore else { return completion(false) }
@@ -40,7 +40,51 @@ class HealthStore {
         }
     }
     
-    func calculateSteps (completion: @escaping (HKStatisticsCollection?) -> Void){
+    func fetchHRData(completion: @escaping (HKStatisticsCollection?) -> Void){
+        let heartRateType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)!
+        
+        let startDate = Calendar.current.startOfDay(for: Date()) // start date is a 12 am
+        let anchorDate = Date.mondayAt12AM()
+        
+        let interval = DateComponents(hour: 1) // interval of step counting is 30 minutes
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: .strictStartDate) // we are searching from start date to anchorDate
+        
+        query = HKStatisticsCollectionQuery(quantityType: heartRateType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: interval)
+        
+        query!.initialResultsHandler = { query, statisticsCollection, error in
+            completion(statisticsCollection)
+        }
+
+        if let healthStore = healthStore , let query = self.query {
+            healthStore.execute(query)
+        }
+    }
+    
+    func calculateDailySteps (completion: @escaping (HKStatisticsCollection?) -> Void) {
+        let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)!
+        
+        let startDate = Calendar.current.startOfDay(for: Date()) // start date is a 12 am
+        let anchorDate = Date.mondayAt12AM()
+        
+        let interval = DateComponents(hour: 1) // interval of step counting is 30 minutes
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: Date(), options: .strictStartDate) // we are searching from start date to anchorDate
+        
+        query = HKStatisticsCollectionQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum, anchorDate: anchorDate, intervalComponents: interval)
+        
+        query!.initialResultsHandler = { query, statisticsCollection, error in
+            completion(statisticsCollection)
+        }
+
+        if let healthStore = healthStore , let query = self.query {
+            healthStore.execute(query)
+        }
+    }
+    
+   
+    
+    func calculateWeeklySteps (completion: @escaping (HKStatisticsCollection?) -> Void){
         
         let stepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.stepCount)! // specifies that we want step count
         
