@@ -22,6 +22,8 @@
 		4A6A5022279BBFF4007C42EA /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6A5021279BBFF4007C42EA /* HealthKit.framework */; };
 		4A6A5024279BC247007C42EA /* HealthStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A5023279BC247007C42EA /* HealthStore.swift */; };
 		4A6A5027279DC957007C42EA /* Steps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A6A5026279DC957007C42EA /* Steps.swift */; };
+		4A81F0F427ADDB6B007A5805 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F0F327ADDB6B007A5805 /* HomeView.swift */; };
+		4A81F0F627ADDBF3007A5805 /* Planner View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A81F0F527ADDBF3007A5805 /* Planner View.swift */; };
 		4AB877F8279DE1940021FABA /* StepDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB877F7279DE1940021FABA /* StepDetail.swift */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +63,8 @@
 		4A6A5021279BBFF4007C42EA /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		4A6A5023279BC247007C42EA /* HealthStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStore.swift; sourceTree = "<group>"; };
 		4A6A5026279DC957007C42EA /* Steps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Steps.swift; sourceTree = "<group>"; };
+		4A81F0F327ADDB6B007A5805 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4A81F0F527ADDBF3007A5805 /* Planner View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planner View.swift"; sourceTree = "<group>"; };
 		4AB877F7279DE1940021FABA /* StepDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +110,8 @@
 			children = (
 				4A6A4FF7279BBBA7007C42EA /* ContentView.swift */,
 				4A1FDAF527A0AB6A004E2315 /* BarChartView.swift */,
+				4A81F0F327ADDB6B007A5805 /* HomeView.swift */,
+				4A81F0F527ADDBF3007A5805 /* Planner View.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -335,10 +341,12 @@
 				4A1FDAF327A0AA71004E2315 /* ActivityData.swift in Sources */,
 				4A6A4FF8279BBBA7007C42EA /* ContentView.swift in Sources */,
 				4A6A5027279DC957007C42EA /* Steps.swift in Sources */,
+				4A81F0F427ADDB6B007A5805 /* HomeView.swift in Sources */,
 				4A1FDAFC27A0ABE4004E2315 /* ColorExtension.swift in Sources */,
 				4A6A5024279BC247007C42EA /* HealthStore.swift in Sources */,
 				4A1FDAF627A0AB6A004E2315 /* BarChartView.swift in Sources */,
 				4AB877F8279DE1940021FABA /* StepDetail.swift in Sources */,
+				4A81F0F627ADDBF3007A5805 /* Planner View.swift in Sources */,
 				4A6A4FF6279BBBA7007C42EA /* PlatesApp.swift in Sources */,
 				4A1FDAFE27A0AC63004E2315 /* Constants.swift in Sources */,
 			);

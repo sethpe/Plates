@@ -42,6 +42,8 @@ struct ContentView: View {
 //
         }
         
+        
+        
         print(stepsList)
         for s in stepsList {
             print(s.count)
@@ -63,61 +65,23 @@ struct ContentView: View {
         
         LineChartView(data: dailyStepsData, title: "Daily Steps", legend: "\(dailySteps)", form: ChartForm.large)
         
-//        List(stepsList, id:\.id) { step in
-//            HStack {
-//                Text("\(step.count)")
-//                    .foregroundColor(.mint)
-//                    .font(.headline)
-//                Text(step.date, style: .date)
-//                    .opacity(0.5)
-//            }
-//        }
-//
         
-//        NavigationView {
-//            List(steps, id:\.id) { step in
-//                NavigationLink  {
-//                    StepDetail()
-//                } label: {
-//                    HStack (alignment: .center){
-//                        Text("\(step.count)")
-//                            .foregroundColor(.mint)
-//                            .font(.headline)
-//                        Text(step.date, style: .date)
-//                            .opacity(0.5)
-//                    }
-//                }
-//            }
-//            .navigationTitle("Daily Steps")
-//        }
-        
-        GeometryReader { geometry in
-            
-            ZStack(alignment: .top){
-                Color.white.edgesIgnoringSafeArea(.all)
-                ScrollView {
-                    VStack {
-                        Spacer(minLength: Constants.navigationBarHeight).frame(width: geometry.size.width, height: Constants.navigationBarHeight, alignment: .top)
-                        // Create workout charts
-                        self.createCharts()
-                    }
-                }
-            }
-            
-            
-            
-        }
+//a
         
         .onAppear {
             if let healthStore = healthStore {
                 healthStore.fetchSteps() { success in
                     if success {
+                        // CALCULATE DAILY STEPS
                         healthStore.calculateDailySteps() { statisticsCollection in
                             if let statisticsCollection = statisticsCollection {
                                 // update the UI
                                 updateUIFromStepsStatistics(statisticsCollection)
                             }
                         }
+                        // CALCULATE HEART RATE FOR THE DAY
+                        
+                        
                     }
                 }
             }
