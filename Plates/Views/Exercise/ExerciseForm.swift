@@ -112,14 +112,11 @@ struct AddExercise: View {
             let newExercise = Exercise(context: managedObjectContext)
             newExercise.name = self.name
             newExercise.notes = self.notes
-//            newExercise.bodyPart = selectedWorkout.wBodyPart.rawValue
+
             newExercise.id = UUID()
             newExercise.dateCreated = Date()
-//            newExercise.updatedAt = Date()
+
             newExercise.displayOrder = Int16(selectedWorkout.wExercises.count)
-//            if references.count > 0 {
-//                newExercise.addToReferences(NSSet(array: references))
-//            }
             selectedWorkout.addToExercises(newExercise)
         }
         if managedObjectContext.hasChanges {
