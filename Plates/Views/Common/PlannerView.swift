@@ -10,12 +10,10 @@ import SwiftUI
 
 struct PlannerView: View {
     
-    @ObservedObject var workoutStore = WorkoutStore()
+//    @ObservedObject var workoutStore = WorkoutStore()
     @State var newWorkout = ""
     
     func addNewWorkout () {
-        workoutStore.workoutList.append(Workout(id: UUID(), dateCreated: Date(), isFavorite: false, name: newWorkout, notes: ""))
-        newWorkout = ""
     }
 
     var addWorkout: some View {
